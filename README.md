@@ -15,11 +15,34 @@ A Model Context Protocol (MCP) server that provides tools for controlling Bond B
 
 ### Prerequisites
 
-- Python 3.11 or higher
 - Bond Bridge on your local network
 - Bond API token (obtained from Bond Home app)
 
-### Installation
+### Getting Your Bond Token
+
+1. Open the Bond Home app on your mobile device
+2. Go to Settings → Bond Bridge → Advanced → API
+3. Copy the Local Token (not the Cloud Token)
+
+### Add to your MCP settings:
+
+```json
+{
+  "mcpServers": {
+    "bond": {
+      "command": "podman",
+      "args": [
+        "run", "-i", "--rm",
+        "-e", "BOND_TOKEN=your_token_here",
+        "-e", "BOND_HOST=192.168.1.100",
+        "quay.io/madorn/bond-mcp-server:latest"
+      ]
+    }
+  }
+}
+```
+
+## Installation
 
 1. **Create and activate virtual environment:**
    ```bash
@@ -43,13 +66,6 @@ A Model Context Protocol (MCP) server that provides tools for controlling Bond B
    python -m bond_mcp.server
    ```
 
-
-### Getting Your Bond Token
-
-1. Open the Bond Home app on your mobile device
-2. Go to Settings → Bond Bridge → Advanced → API
-3. Copy the Local Token (not the Cloud Token)
-
 ### Configuration
 
 Create a `.env` file with your Bond Bridge configuration:
@@ -66,21 +82,6 @@ BOND_RETRY_DELAY=1.0
 
 # Optional: Logging
 LOG_LEVEL=INFO
-```
-
-## Podman Usage
-
-### Build and Run
-
-```bash
-# Build the container
-podman build -t bond-mcp-server .
-
-# Run with environment variables
-podman run -i --rm \
-  -e BOND_TOKEN=your_token_here \
-  -e BOND_HOST=192.168.1.100 \
-  bond-mcp-server
 ```
 
 ## Available Tools
@@ -106,26 +107,6 @@ podman run -i --rm \
 
 ### Light Control
 - `set_light_brightness(device_id, brightness)` - Set brightness (0-100)
-
-## MCP Client Integration
-
-Add to your MCP settings:
-
-```json
-{
-  "mcpServers": {
-    "bond": {
-      "command": "podman",
-      "args": [
-        "run", "-i", "--rm",
-        "-e", "BOND_TOKEN=your_token_here",
-        "-e", "BOND_HOST=192.168.1.100",
-        "bond-mcp-server"
-      ]
-    }
-  }
-}
-```
 
 ### Bond API Reference
 
