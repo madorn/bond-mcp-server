@@ -1,6 +1,6 @@
 # Bond MCP Server
 
-A Model Context Protocol (MCP) server that provides tools for controlling Bond Bridge smart home devices. This server enables AI assistants like Claude to interact with ceiling fans, fireplaces, shades, lights, and other RF-controlled devices through Bond Bridge hubs.
+A Model Context Protocol (MCP) server that provides tools for controlling [Bond Bridge](https://bondhome.io/product/bond-bridge/) smart home devices. This server enables AI assistants like Claude to interact with ceiling fans, fireplaces, shades, lights, and other RF-controlled devices through Bond Bridge hubs.
 
 ## Features
 
