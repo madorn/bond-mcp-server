@@ -46,7 +46,7 @@ A Model Context Protocol (MCP) server that provides tools for controlling [Bond 
 
 1. **Create and activate virtual environment:**
    ```bash
-   python3.11 -m venv bond-mcp-env
+   python3 -m venv bond-mcp-env
    source bond-mcp-env/bin/activate  # On Windows: bond-mcp-env\Scripts\activate
    ```
 
